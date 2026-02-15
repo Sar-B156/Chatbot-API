@@ -1073,10 +1073,11 @@ else:
 st.markdown("---")
 st.markdown("""
 <div style='text-align: center; color: #888; padding: 20px;'>
-    <small>💼 Business AI Advisor v2.0 | Powered by OpenRouter AI<br>
+    <small>Business AI Advisor v2.0 | Powered by OpenRouter AI<br>
     Expert in Business Strategy, Financial Analysis & Market Economics<br>
-    <strong style='color: #4caf50;'>🆓 100% GRATIS untuk UMKM & Startup!</strong></small>
+    <strong style='color: #4caf50;'>100% GRATIS untuk UMKM & Startup!</strong></small>
 </div>
 
 """, unsafe_allow_html=True)
+
 
