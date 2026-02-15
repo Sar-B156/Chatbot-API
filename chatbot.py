@@ -12,15 +12,23 @@ import io
 import base64
 from PIL import Image
 
+
+
+
+
+
 # ==================== KONFIGURASI HALAMAN ====================
 st.set_page_config(
     page_title="Business AI Advisor",
-    page_icon="💼",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# ==================== CSS STYLING - MINIMALIS HITAM-ABU ====================
+
+
+
+# ==================== CSS STYLING - MINIMALIS HITAMABU ====================
 st.markdown("""
 <style>
     /* Background */
@@ -97,35 +105,41 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+
+
+
+
+
+
 # ==================== BUSINESS EXPERTISE SYSTEM PROMPT ====================
 BUSINESS_SYSTEM_PROMPT = """Anda adalah BUSINESS AI ADVISOR - asisten AI ahli dalam bidang bisnis dan ekonomi yang membantu admin/pengusaha membuat keputusan bisnis yang cerdas.
 
 KEAHLIAN ANDA:
-📊 Analisis Bisnis & Strategi
+Analisis Bisnis & Strategi
 - Analisis SWOT, Porter's Five Forces, Business Model Canvas
 - Strategi pertumbuhan, ekspansi, dan skalabilitas
 - Competitive analysis dan market positioning
 - Blue ocean strategy dan differentiation
 
-💰 Keuangan & Ekonomi
+Keuangan & Ekonomi
 - Financial planning, budgeting, cash flow analysis
 - ROI, NPV, IRR, break-even analysis
 - Pricing strategy dan cost optimization
 - Investment analysis dan capital allocation
 
-📈 Marketing & Sales
+Marketing & Sales
 - Market research, segmentation, targeting
 - Digital marketing strategy (SEO, SEM, Social Media)
 - Customer acquisition, retention, lifetime value
 - Sales funnel optimization dan conversion
 
-👥 Manajemen & Operasional
+Manajemen & Operasional
 - Project management dan productivity
 - Team building dan leadership
 - Supply chain dan inventory management
 - Process optimization dan automation
 
-📉 Risk Management & Compliance
+Risk Management & Compliance
 - Risk assessment dan mitigation
 - Business continuity planning
 - Regulatory compliance
@@ -152,6 +166,10 @@ HINDARI:
 ❌ Overconfidence atau guarantee hasil
 
 Anda siap membantu admin membuat keputusan bisnis yang lebih baik!"""
+
+
+
+
 
 # ==================== FUNGSI FILE PROCESSING ====================
 
@@ -337,6 +355,10 @@ def generate_visualizations(df, filename):
     
     return charts
 
+
+
+
+
 def generate_ai_insights(df, charts_info, api_key, model):
     """Generate business insights from data with company context"""
     
@@ -368,6 +390,10 @@ Fokus: practical untuk perusahaan ini."""
         [{"role": "user", "content": prompt}],
         model
     )
+
+
+
+
 
 # ==================== API FUNCTIONS ====================
 
@@ -507,17 +533,22 @@ Fokus pada ACTIONABLE INSIGHTS untuk keputusan bisnis!"""
     except requests.exceptions.RequestException as e:
         return f"Error API: {str(e)}"
 
-# ==================== SESSION STATE ====================
+
+
+
+
+
+
+# ==================== SESSION STATE ======================
 
 def get_company_profile_context():
     """Generate SHORT company profile context for AI"""
     profile = st.session_state.company_profile
     
-    # Check if profile is filled
     if not profile['name']:
         return ""
     
-    # SHORTENED version - only essentials
+    # SHORTENED version - only essentiall
     context = f"""PERUSAHAAN: {profile['name']} | {profile['industry']} | Omzet: {profile['revenue']} | Target: {profile['target_market']}
 TANTANGAN: {profile['challenges'][:150] if profile['challenges'] else 'N/A'}
 GOALS: {profile['goals'][:150] if profile['goals'] else 'N/A'}"""
@@ -557,6 +588,11 @@ if 'company_profile' not in st.session_state:
 
 if 'company_docs' not in st.session_state:
     st.session_state.company_docs = []
+
+
+
+
+
 
 # ==================== SIDEBAR ====================
 
@@ -731,23 +767,23 @@ with st.sidebar:
     st.markdown("---")
     
     # Quick Business Tips
-    st.subheader("💡 Business Tips")
+    st.subheader("Business Tips")
     
-    with st.expander("📊 Analisis Data"):
+    with st.expander("Analisis Data"):
         st.markdown("""
         - Upload file Excel/CSV untuk analisis
         - Dapatkan insights finansial otomatis
         - Visualisasi data interaktif
         """)
     
-    with st.expander("🖼️ Analisis Gambar"):
+    with st.expander("Analisis Gambar"):
         st.markdown("""
         - Upload foto produk untuk review
         - Analisis chat customer
         - Screenshot report/dashboard
         """)
     
-    with st.expander("💬 Konsultasi Bisnis"):
+    with st.expander("Konsultasi Bisnis"):
         st.markdown("""
         Tanya tentang:
         - Strategi marketing & sales
@@ -769,8 +805,8 @@ with st.sidebar:
     )
     
     if uploaded_file and api_key:
-        if st.button("🔍 Analisis File", use_container_width=True, type="primary"):
-            with st.spinner("⏳ Menganalisis file..."):
+        if st.button("Analisis File", use_container_width=True, type="primary"):
+            with st.spinner("Menganalisis file..."):
                 try:
                     file_extension = uploaded_file.name.split('.')[-1].lower()
                     
@@ -882,14 +918,14 @@ Fokus: actionable insights untuk bisnis ini."""
     
     # Uploaded docs display
     if st.session_state.uploaded_docs:
-        st.subheader("📁 Files")
+        st.subheader("Files")
         for doc in st.session_state.uploaded_docs[-3:]:
-            st.caption(f"📄 {doc['name']}")
+            st.caption(f"{doc['name']}")
     
     st.markdown("---")
     
     # Clear button
-    if st.button("🗑️ Clear Chat", use_container_width=True):
+    if st.button("Clear Chat", use_container_width=True):
         st.session_state.messages = []
         st.session_state.document_context = ""
         st.session_state.uploaded_docs = []
@@ -914,14 +950,14 @@ if not api_key:
     3. Pilih model dengan 🆓 (gratis selamanya)
     4. Mulai konsultasi bisnis!
     
-    💼 **Business AI Advisor dapat membantu:**
-    - 📊 Analisis data & visualisasi finansial
-    - 💡 Strategi bisnis & market analysis  
-    - 💰 Financial planning & budgeting
-    - 📈 Marketing & sales optimization
-    - 🖼️ Analisis produk & customer feedback
+    **Business AI Advisor dapat membantu:**
+    - Analisis data & visualisasi finansial
+    - Strategi bisnis & market analysis  
+    - Financial planning & budgeting
+    - Marketing & sales optimization
+    - Analisis produk & customer feedback
     
-    ✅ **Cocok untuk UMKM, Startup, & Usaha Kecil!**
+    **Cocok untuk UMKM, Startup, & Usaha Kecil!**
     """)
 else:
     # Display chat messages
@@ -934,7 +970,7 @@ else:
                         use_container_width=True)
             
             st.markdown(message["content"])
-            st.caption(f"🕐 {message.get('timestamp', '')}")
+            st.caption(f"{message.get('timestamp', '')}")
     
     # Chat input
     if prompt := st.chat_input("Tanyakan strategi bisnis, analisis data, atau konsultasi ekonomi..."):
@@ -1003,13 +1039,13 @@ else:
     # Show dataframes
     if st.session_state.dataframes:
         st.markdown("---")
-        st.subheader("📊 Data Tables")
+        st.subheader("Data Tables")
         for filename, df in st.session_state.dataframes.items():
-            with st.expander(f"📄 {filename}"):
+            with st.expander(f"{filename}"):
                 st.dataframe(df, use_container_width=True)
                 csv = df.to_csv(index=False).encode('utf-8')
                 st.download_button(
-                    label="⬇️ Download CSV",
+                    label="Download CSV",
                     data=csv,
                     file_name=f"{filename}.csv",
                     mime="text/csv"
@@ -1018,10 +1054,10 @@ else:
     # Show visualizations
     if st.session_state.charts:
         st.markdown("---")
-        st.subheader("📈 Data Visualizations")
+        st.subheader("Data Visualizations")
         
         for filename, charts in st.session_state.charts.items():
-            st.markdown(f"### 📊 {filename}")
+            st.markdown(f"### {filename}")
             
             if charts:
                 tab_names = [chart[0] for chart in charts]
@@ -1041,4 +1077,5 @@ st.markdown("""
     Expert in Business Strategy, Financial Analysis & Market Economics<br>
     <strong style='color: #4caf50;'>🆓 100% GRATIS untuk UMKM & Startup!</strong></small>
 </div>
+
 """, unsafe_allow_html=True)
