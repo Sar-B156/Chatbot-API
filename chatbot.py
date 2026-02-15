@@ -597,7 +597,7 @@ if 'company_docs' not in st.session_state:
 # ==================== SIDEBAR ====================
 
 with st.sidebar:
-    st.title("💼 Business AI Advisor")
+    st.title("Business AI Advisor")
     st.caption("Your Expert in Business & Economics")
     
     # Info box tentang model gratis
@@ -611,7 +611,7 @@ with st.sidebar:
     st.markdown("---")
     
     # COMPANY PROFILE SECTION
-    with st.expander("🏢 **PROFIL PERUSAHAAN**", expanded=False):
+    with st.expander("**PROFIL PERUSAHAAN**", expanded=False):
         st.markdown("*Isi profil agar AI paham bisnis Anda!*")
         
         # Basic Info
@@ -683,7 +683,7 @@ with st.sidebar:
         )
         
         # Save button
-        if st.button("💾 Simpan Profil Perusahaan", use_container_width=True):
+        if st.button("Simpan Profil Perusahaan", use_container_width=True):
             st.session_state.company_profile = {
                 'name': company_name,
                 'industry': company_industry,
@@ -699,11 +699,11 @@ with st.sidebar:
         
         # Show saved profile status
         if st.session_state.company_profile['name']:
-            st.info(f"📋 Profil aktif: **{st.session_state.company_profile['name']}**")
+            st.info(f"Profil aktif: **{st.session_state.company_profile['name']}**")
         
         # Upload company documents
         st.markdown("---")
-        st.markdown("**📄 Dokumen Perusahaan** *(Opsional)*")
+        st.markdown("**Dokumen Perusahaan** *(Opsional)*")
         st.caption("Upload dokumen seperti company profile, business plan, laporan, dll.")
         
         company_doc = st.file_uploader(
@@ -712,7 +712,7 @@ with st.sidebar:
             key="company_doc_uploader"
         )
         
-        if company_doc and st.button("📥 Tambah ke Profil", use_container_width=True):
+        if company_doc and st.button("Tambah ke Profil", use_container_width=True):
             with st.spinner("Memproses dokumen..."):
                 file_extension = company_doc.name.split('.')[-1].lower()
                 
@@ -733,7 +733,7 @@ with st.sidebar:
         if st.session_state.company_docs:
             st.markdown("**Dokumen tersimpan:**")
             for doc in st.session_state.company_docs:
-                st.caption(f"📄 {doc['name']}")
+                st.caption(f"{doc['name']}")
     
     st.markdown("---")
     
@@ -1079,3 +1079,4 @@ st.markdown("""
 </div>
 
 """, unsafe_allow_html=True)
+
